@@ -1,0 +1,49 @@
+{
+  "name": "leg-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "setup": "tsx src/scripts/setup.ts",
+    "dev": "next dev",
+    "build": "next build",
+    "full-build": "drizzle-kit generate && drizzle-kit migrate && next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "seed:roles": "tsx src/scripts/seed-staff-roles.ts",
+    "seed:admins": "tsx src/scripts/seed-admin-users.ts"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.39.0",
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "^1.0.0-beta.15-859cf75",
+    "next": "16.1.6",
+    "pg": "^8.19.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/node": "^20.19.35",
+    "@types/pg": "^8.18.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "babel-plugin-react-compiler": "1.0.0",
+    "drizzle-kit": "^1.0.0-beta.15-859cf75",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4.2.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "esbuild",
+    "sharp",
+    "unrs-resolver"
+  ]
+}

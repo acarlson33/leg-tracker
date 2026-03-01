@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── View Transition Animations ─────────────────────────────────────────── */
+
+/* Default page-level cross-fade with a gentle vertical shift */
+::view-transition-old(root) {
+  animation: 180ms ease-in vt-slide-out both;
+}
+::view-transition-new(root) {
+  animation: 280ms ease-out vt-slide-in both;
+}
+
+@keyframes vt-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes vt-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The sticky nav doesn't need to animate — keep it stationary */
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Chamber card ↔ chamber detail header: smooth morph */
+::view-transition-old(chamber-card),
+::view-transition-new(chamber-card) {
+  animation: 320ms ease-in-out vt-card-morph both;
+}
+
+@keyframes vt-card-morph {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
